@@ -1,0 +1,763 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Chandresh Gohel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Chandresh Gohel - AI/ML Engineer. Engine fatigue analysis, sonar vision, captcha-solving AI and LLM systems that work in the physical world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: calm "open air" page. A soft dusk-to-sea gradient sky with slow wind streams behind
+   everything; content sits on frosted, translucent panels. Sections read top to bottom like a story. */
+:root{
+  --bg:#0C1522; --bg-2:#12283A; --glow-a:rgba(243,210,122,.14); --glow-b:rgba(150,170,230,.13);
+  --panel:rgba(20,36,52,.62); --panel-2:rgba(255,255,255,.04); --line:rgba(190,215,225,.13);
+  --fg:#E8EFF3; --mute:#9DB0BC; --accent:#F3D27A; --on-accent:#1C1708; --soft:#F3D27A; --sky:#AFC9EE;
+  --good:#7FD6A8; --warn:#F0CF86; --bad:#F09A8E; --wind:235,222,180;
+  --screen:#0F1D2B; --screen-fg:#BFE6DD;
+  --sans:"Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"DM Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#EAF2F4; --bg-2:#D9E9EE; --glow-a:rgba(245,205,100,.32); --glow-b:rgba(160,180,235,.25);
+  --panel:rgba(255,255,255,.66); --panel-2:rgba(255,255,255,.55); --line:rgba(40,80,95,.14);
+  --fg:#17303B; --mute:#587080; --accent:#8A6508; --on-accent:#FFFFFF; --soft:#B5664A; --sky:#3E6CA6;
+  --good:#1F8A55; --warn:#94680A; --bad:#B9473A; --wind:150,120,50;
+  --screen:#0F1D2B; --screen-fg:#BFE6DD; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#EAF2F4; --bg-2:#D9E9EE; --glow-a:rgba(245,205,100,.32); --glow-b:rgba(160,180,235,.25);
+  --panel:rgba(255,255,255,.66); --panel-2:rgba(255,255,255,.55); --line:rgba(40,80,95,.14);
+  --fg:#17303B; --mute:#587080; --accent:#8A6508; --on-accent:#FFFFFF; --soft:#B5664A; --sky:#3E6CA6;
+  --good:#1F8A55; --warn:#94680A; --bad:#B9473A; --wind:150,120,50;
+  --screen:#0F1D2B; --screen-fg:#BFE6DD; color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);background-image:radial-gradient(1100px 600px at 12% -5%,var(--glow-a),transparent 65%),radial-gradient(900px 600px at 95% 10%,var(--glow-b),transparent 60%),linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 45%,var(--bg) 100%);background-attachment:fixed;color:var(--fg);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+#wind{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer,header.nav{position:relative;z-index:1}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono)}
+.label{font:600 12px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+/* nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.brand{font:700 16px var(--sans);text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{font-size:14px;font-weight:500;text-decoration:none;color:var(--mute);transition:color .2s}
+.nav ul a:hover{color:var(--fg)}
+.toggle{font:500 13px var(--sans);background:var(--panel-2);border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:6px 14px;cursor:pointer}
+.toggle:hover{border-color:var(--accent)}
+@media (max-width:860px){.nav ul{display:none}.toggle{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:84px 72px;display:grid;grid-template-columns:1.35fr .9fr;gap:48px;align-items:end}
+.now{display:inline-flex;align-items:center;gap:10px;font:500 13px var(--sans);color:var(--mute);background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 10px;margin-bottom:30px}
+.now i{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px color-mix(in srgb,var(--good) 22%,transparent);animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--good) 8%,transparent)}}
+@media (prefers-reduced-motion: reduce){.now i{animation:none}}
+.role{font:600 13px var(--sans);color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+h1.name{font:800 clamp(56px,10vw,128px)/.95 var(--sans);letter-spacing:-.045em;margin:0;background:linear-gradient(100deg,var(--fg) 30%,var(--accent) 75%,var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1.name em{font-style:normal}
+.tag{font:600 clamp(21px,2.4vw,28px)/1.3 var(--sans);margin:28px 0 14px;letter-spacing:-.015em;text-wrap:balance}
+.lead{color:var(--mute);max-width:58ch;font-size:17px;margin:0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--sans);text-decoration:none;padding:12px 20px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer;transition:transform .2s,border-color .2s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.readout{border:1px solid var(--line);border-radius:20px;background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:20px 22px 14px;font-size:14px}
+.readout .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.readout .row:last-of-type{border-bottom:0}
+.readout b{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.readout span{color:var(--mute)}
+.readout canvas{display:block;width:100%;height:70px;margin:8px 0 10px}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-block:52px}}
+
+/* sections */
+section.block{padding-block:88px}
+.head{display:grid;grid-template-columns:200px 1fr;gap:24px;margin-bottom:44px}
+.head h2{font:700 clamp(30px,4vw,46px)/1.1 var(--sans);letter-spacing:-.03em;margin:2px 0 12px;text-wrap:balance}
+.head p{color:var(--mute);margin:0;max-width:62ch}
+@media (max-width:760px){.head{grid-template-columns:1fr;gap:6px}}
+
+/* field work */
+.jobs{display:grid;gap:18px}
+.job{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:26px;border:1px solid var(--line);border-radius:20px;background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.job .when{font-size:14px;line-height:1.6;color:var(--mute)}
+.job .when b{display:block;color:var(--fg);font-weight:600;font-size:15px;margin-bottom:4px}
+.job .org{font-weight:600;font-size:14px;color:var(--accent);margin:0 0 4px}
+.job h3{font:700 22px/1.3 var(--sans);margin:0 0 10px;letter-spacing:-.015em}
+.job p{margin:0;color:var(--mute);max-width:68ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding:0;list-style:none}
+.chips li{font:500 13px var(--sans);padding:5px 12px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line)}
+.chips li.m{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.status{display:inline-block;font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent);margin-left:8px;vertical-align:middle}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:10px;padding:20px}}
+
+/* lab */
+.lab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.sim{background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sim.wide{grid-column:1/-1}
+.sim header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sim h3{font:700 18px/1.3 var(--sans);margin:0;letter-spacing:-.01em}
+.sim .id{font:500 12px var(--mono);color:var(--accent)}
+.sim canvas,.sim svg{display:block;width:100%;border-radius:14px;background:var(--screen)}
+.sim .desc{color:var(--mute);font-size:14px;margin:0}
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.ctrl label{font:500 13px var(--sans);color:var(--mute);display:flex;align-items:center;gap:10px}
+.ctrl output{font:500 13px var(--sans);color:var(--fg);min-width:52px;font-variant-numeric:tabular-nums}
+input[type=range]{accent-color:var(--accent);width:140px}
+.sbtn{font:600 13px var(--sans);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);cursor:pointer;transition:border-color .2s}
+.sbtn:hover{border-color:var(--accent)}
+.sbtn.on{border-color:var(--accent);color:var(--accent)}
+.term{font:400 13px/1.6 var(--mono);background:var(--screen);color:var(--screen-fg);border-radius:12px;padding:10px 14px;margin:0;overflow-x:auto;white-space:pre-wrap;min-height:44px}
+.metric{font:500 13px var(--sans);color:var(--mute)}
+.metric b{color:var(--accent);font-weight:600}
+.slots{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.slot{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center}
+.slot b{display:block;font:600 22px var(--mono)}
+.slot small{display:block;font:400 11px var(--sans);color:var(--mute);font-variant-numeric:tabular-nums}
+.slot .bar{height:3px;border-radius:2px;background:var(--line);margin-top:6px;overflow:hidden}
+.slot .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
+.slot.low b{color:var(--bad)}
+.gauge{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px}
+.gauge .track{height:10px;border-radius:5px;background:var(--panel-2);border:1px solid var(--line);overflow:hidden;position:relative}
+.gauge .fill{position:absolute;inset:0 auto 0 0;border-radius:5px;transition:width .4s,background .4s}
+.pill{font:700 12px var(--sans);letter-spacing:.08em;padding:4px 12px;border-radius:999px}
+.hb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.hb label{flex-direction:column;align-items:flex-start;gap:6px}
+.hb input[type=range]{width:100%}
+@media (max-width:860px){.lab{grid-template-columns:1fr}.sim.wide{grid-column:auto}.hb{grid-template-columns:1fr}}
+
+/* stack */
+.stack{display:grid;gap:0;border:1px solid var(--line);border-radius:20px;background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:8px 26px}
+.stack .grp{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:18px 0;border-top:1px solid var(--line);align-items:center}
+.stack .grp:first-child{border-top:0}
+.stack ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.stack li{font-size:14px;font-weight:500;padding:5px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel-2)}
+@media (max-width:760px){.stack{padding:6px 18px}.stack .grp{grid-template-columns:1fr;gap:8px}}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+@media (prefers-reduced-motion: reduce){.card,.btn{transition:none}.card:hover,.btn:hover{transform:none}}
+.card .vis{background:var(--screen);color:var(--screen-fg);font:400 12px/1.6 var(--mono);height:150px;padding:18px;position:relative;overflow:hidden}
+.card .vis canvas,.card .vis svg{position:absolute;inset:0;width:100%;height:100%}
+.card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font:700 20px/1.3 var(--sans);margin:0;letter-spacing:-.015em}
+.card p{margin:0;color:var(--mute);font-size:15px}
+.card .chips{margin-top:auto;padding-top:6px}
+.badge{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+.more{margin-top:26px;font:600 15px var(--sans)}
+.more a{color:var(--accent);text-decoration:none}
+
+/* paper */
+.paper{background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:20px;padding:30px;display:grid;grid-template-columns:200px 1fr;gap:24px}
+.paper h3{font:700 clamp(20px,2.3vw,25px)/1.35 var(--sans);margin:0 0 8px;letter-spacing:-.015em;text-wrap:balance}
+.paper .auth{font-weight:600;font-size:14px;color:var(--accent);margin:0 0 14px}
+.paper p{color:var(--mute);margin:0 0 16px;max-width:70ch}
+.paper .doi{font:500 13px var(--mono);color:var(--sky)}
+@media (max-width:760px){.paper{grid-template-columns:1fr;padding:22px}}
+
+/* contact */
+.contact h2{font:800 clamp(38px,6vw,72px)/1.05 var(--sans);letter-spacing:-.04em;margin:12px 0 18px;max-width:14ch;text-wrap:balance}
+.contact p{color:var(--mute);max-width:56ch;font-size:17px;margin:0 0 28px}
+.contact .note{font-size:14px;color:var(--mute);margin-top:22px}
+footer{border-top:1px solid var(--line);padding-block:28px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+footer a{text-decoration:none}
+footer a:hover{color:var(--fg)}
+</style>
+
+<canvas id="wind" aria-hidden="true"></canvas>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">chandresh<span>.</span>gohel</a>
+    <ul>
+      <li><a href="#field">Field Work</a></li>
+      <li><a href="#lab">Systems Lab</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="toggle" id="themeBtn" type="button">Light</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="now"><i></i>Now - Engine Health AI · Meta Hackathon · finished</div>
+      <p class="role">AI / ML Engineer</p>
+      <h1 class="name">Chandresh<br>Gohel<em>.</em></h1>
+      <p class="tag">Neural systems that work in the physical world.</p>
+      <p class="lead">I work where models meet machines: captcha recognition at BISAG-N, engine fatigue at Rolls-Royce Power Systems, sonar vision underwater. The goal is always the same. AI you can trust on the job.</p>
+      <div class="cta">
+        <a class="btn primary" href="#lab">Explore the Systems Lab →</a>
+        <a class="btn" href="https://github.com/chandresh-gohel" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <aside class="readout" aria-label="Engine dataset readout">
+      <div class="label">Engine dataset · live trace</div>
+      <canvas id="heroTrace" height="70"></canvas>
+      <div class="row"><span>RF-cycle model</span><b>GPR · R² 0.89</b></div>
+      <div class="row"><span>Interval coverage</span><b>93% @ 95% CI</b></div>
+      <div class="row"><span>Sonar detector</span><b>53 FPS · Jetson Orin</b></div>
+      <div class="row"><span>CAPTCHA recognizer</span><b>95% test acc</b></div>
+    </aside>
+  </div>
+
+  <section class="block" id="field">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Field Work</div>
+        <div>
+          <h2>Systems shipped with real stakes.</h2>
+          <p>Internships where the output had to survive contact with engines, secure forms and the open ocean.</p>
+        </div>
+      </div>
+      <div class="jobs">
+        <article class="job">
+          <div class="when"><b>Engineering Intern (Machine Learning)</b>Jul 2025 – Dec 2025<br>Pune, India</div>
+          <div>
+            <p class="org">Rolls-Royce Power Systems – MTU India Pvt. Ltd.</p>
+            <h3>Engine Fatigue Analysis Pipeline</h3>
+            <p>Applied rain-flow cycle counting to multi-year operational telemetry across multiple diesel engine series, then implemented a custom Gaussian Process Regression model to predict RF-cycle accumulation. Weighted R² 0.89, validated at 93% empirical coverage against the nominal 95% confidence interval.</p>
+            <ul class="chips"><li>Rain-Flow Counting</li><li>Gaussian Process Regression</li><li class="m">R² 0.89</li><li class="m">93% coverage @ 95% CI</li></ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when"><b>Machine Learning Intern</b>Dec 2022 – Apr 2023<br>Gandhinagar, India</div>
+          <div>
+            <p class="org">BISAG-N</p>
+            <h3>Synthetic CAPTCHA Pipeline &amp; CNN Recognizer</h3>
+            <p>Generated a 500K-image synthetic training dataset (ImageCaptcha) and engineered the end-to-end pipeline: augmentation, preprocessing, labeling. The CNN multi-character sequence recognizer in TensorFlow/Keras reached 97% train / 95% test accuracy with test loss reduced to 0.21.</p>
+            <ul class="chips"><li>ImageCaptcha · 500K images</li><li>CNN · TF/Keras</li><li class="m">95% test acc · 0.21 loss</li></ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when"><b>Built</b>Meta Hackathon<span class="status">Completed</span></div>
+          <div>
+            <p class="org">Meta Hackathon</p>
+            <h3>Engine Prediction &amp; Recommendation System</h3>
+            <p>Built a starter system for engine prediction and recommendation: it flags engine health issues and recommends the next inspection, in real time.</p>
+            <ul class="chips"><li>Predictive Maintenance</li><li>Recommendation</li><li class="m">Shipped</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="lab">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Systems Lab</div>
+        <div>
+          <h2>How the work actually works.</h2>
+          <p>Live simulations of the systems I've built. Extend the telemetry, run the recognizer, fly a sonar pass, query the memory graph, read the health index. Every panel mirrors a real deliverable.</p>
+        </div>
+      </div>
+      <div class="lab">
+
+        <article class="sim wide">
+          <header><h3>Engine Fatigue - GP Range Analysis</h3><span class="id">SIM-01</span></header>
+          <canvas id="gpCanvas" height="300" aria-label="Gaussian process forecast of rain-flow cycles over service life"></canvas>
+          <div class="ctrl">
+            <label for="gpYears">Telemetry history <input type="range" id="gpYears" min="1" max="6" step="1" value="3"></label>
+            <output id="gpYearsOut">3 yr</output>
+            <button class="sbtn" id="gpResample" type="button">Resample</button>
+            <span class="metric" style="margin-left:auto"><b>R² 0.89</b> · cov 93/95</span>
+          </div>
+          <p class="desc">Rain-flow cycle counting over multi-year telemetry; a custom Gaussian Process predicts RF-cycle accumulation, with a weighted R² of 0.89 and 93% empirical coverage against the nominal 95% interval. Shaded band is the 95% predictive interval; the dashed region is forecast.</p>
+        </article>
+
+        <article class="sim">
+          <header><h3>CAPTCHA Recognizer - BISAG-N</h3><span class="id">SIM-02</span></header>
+          <canvas id="capCanvas" height="120" aria-label="Synthetic captcha image"></canvas>
+          <div class="slots" id="capSlots"></div>
+          <div class="ctrl">
+            <label for="capNoise">Noise <input type="range" id="capNoise" min="0" max="90" value="45"></label>
+            <output id="capNoiseOut">45%</output>
+            <button class="sbtn" id="capRun" type="button">Run solver</button>
+            <button class="sbtn" id="capNew" type="button">New captcha</button>
+          </div>
+          <pre class="term" id="capOut">&gt; OUTPUT: -</pre>
+          <p class="metric"><b>95% test acc</b> · loss 0.21 · ImageCaptcha 500K</p>
+          <p class="desc">A 500K-image synthetic dataset (ImageCaptcha) feeding an end-to-end pipeline into a TensorFlow/Keras multi-character sequence recognizer. 95% test accuracy at 0.21 test loss.</p>
+        </article>
+
+        <article class="sim">
+          <header><h3>Side-Scan Sonar - Fish Detection &amp; Counting</h3><span class="id">SIM-03</span></header>
+          <canvas id="sonarCanvas" height="300" aria-label="Side-scan sonar waterfall with detected fish"></canvas>
+          <div class="ctrl">
+            <span class="metric" id="sonarStatus">Pass complete - fish counted <b>6 / 6</b></span>
+            <button class="sbtn" id="sonarNew" type="button" style="margin-left:auto">New pass</button>
+          </div>
+          <p class="desc">The AUV flies a pass; the side-scan record is scanned line by line and targets are boxed and counted as the record scrolls. This is the CFC-dataset pipeline behind my IEEE I3CTCON 2026 paper.</p>
+        </article>
+
+        <article class="sim">
+          <header><h3>HydraDB - Agent Memory Graph</h3><span class="id">SIM-04</span></header>
+          <div class="label">Chat history → knowledge graph (HydraDB · OpenCypher)</div>
+          <svg id="graph" viewBox="0 0 520 210" role="img" aria-label="Knowledge graph of timestamped facts linked by SUPERSEDES edges"></svg>
+          <div class="ctrl">
+            <button class="sbtn" id="qYes" type="button">Answerable query</button>
+            <button class="sbtn" id="qNo" type="button">Unanswerable query</button>
+            <button class="sbtn" id="qLex" type="button" aria-pressed="false">Keyword (lexical fallback)</button>
+          </div>
+          <pre class="term" id="graphOut">&gt; run a query against the memory graph…</pre>
+          <p class="desc">Chat history modeled as a timestamped knowledge graph, answered by Cypher traversal over SUPERSEDES edges, with no embeddings. A structural abstention gate refuses rather than fabricate when the subgraph is empty.</p>
+        </article>
+
+        <article class="sim">
+          <header><h3>Engine Health - Prediction &amp; Recommendation</h3><span class="id">SIM-05</span></header>
+          <div class="ctrl hb">
+            <label for="hVib">Vibration <output id="hVibOut">18 mm/s</output><input type="range" id="hVib" min="0" max="60" value="18"></label>
+            <label for="hOil">Oil temp <output id="hOilOut">88 °C</output><input type="range" id="hOil" min="60" max="135" value="88"></label>
+            <label for="hEgt">Exhaust gas temp <output id="hEgtOut">420 °C</output><input type="range" id="hEgt" min="250" max="650" step="5" value="420"></label>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:8px">Health index · GP model</div>
+            <div class="gauge">
+              <span id="hIdx" style="font-size:24px;font-weight:700;font-variant-numeric:tabular-nums">92</span>
+              <div class="track"><div class="fill" id="hFill"></div></div>
+              <span class="pill" id="hPill">HEALTHY</span>
+            </div>
+          </div>
+          <pre class="term" id="hOut">&gt; Recommendation: continue operation - next check at the scheduled interval</pre>
+          <p class="desc">Sensor streams in, a health index and recommendation out. This is the Meta AI hackathon build for planning the next engine inspection.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="stack">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Stack</div>
+        <div>
+          <h2>The toolchain behind the systems.</h2>
+          <p>Chosen for delivery, from firmware-level C to agentic LLM systems.</p>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="grp"><div class="label">AI / ML</div><ul><li>PyTorch</li><li>TensorFlow</li><li>Scikit-learn</li><li>LLMs</li><li>Agentic Systems</li><li>LangChain</li><li>LangGraph</li><li>RAG</li><li>Prompt Engineering</li><li>Computer Vision</li><li>LLM Fine-tuning</li></ul></div>
+        <div class="grp"><div class="label">Languages</div><ul><li>Python</li><li>C</li><li>C++</li></ul></div>
+        <div class="grp"><div class="label">Web &amp; APIs</div><ul><li>FastAPI</li><li>ASP.NET Core</li></ul></div>
+        <div class="grp"><div class="label">Databases</div><ul><li>MongoDB</li><li>SQL Server</li><li>MySQL</li></ul></div>
+        <div class="grp"><div class="label">Tools</div><ul><li>VS Code</li><li>Git</li><li>Docker</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Selected Work</div>
+        <div>
+          <h2>Things I've built and shipped.</h2>
+          <p>Sonar vision, graph-native memory, LLM review tooling and predictive engines. Repositories live on GitHub.</p>
+        </div>
+      </div>
+      <div class="work">
+        <article class="card">
+          <div class="vis"><canvas id="cardSonar"></canvas></div>
+          <div class="body">
+            <h3>Sonar Object Detection for AUVs<span class="badge">Published</span></h3>
+            <p>Benchmarked 12 YOLO configurations on the CFC side-scan dataset. Hybrid MOG2+TVG tensors cut MAE 13.4%, cross-site DAOD cut missed-frame rates to 25.1% / 5.61%, with 53 FPS sustained on Jetson Orin.</p>
+            <ul class="chips"><li>YOLO</li><li>PyTorch</li><li>Computer Vision</li><li class="m">IEEE I3CTCON 2026</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="vis">$ MATCH (t)-[:SUPERSEDES*]-&gt;(latest)<br><span style="opacity:.65">t1 → t2 → t3 → latest</span><br><br><span style="color:#F3D27A">abstention gate: empty subgraph → REFUSED</span></div>
+          <div class="body">
+            <h3>Graph-Native Agent Memory - HydraDB</h3>
+            <p>Agent memory as a timestamped knowledge graph in HydraDB: Cypher traversal over SUPERSEDES edges, with no embeddings or vector store. A structural abstention gate deterministically refuses when the subgraph is empty, so it gives no fabricated answers, and it outperformed a long-context baseline on a LongMemEval subset.</p>
+            <ul class="chips"><li>Python</li><li>HydraDB</li><li>OpenCypher</li><li>Groq</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="vis"><canvas id="cardEngine"></canvas></div>
+          <div class="body">
+            <h3>Engine Health Prediction &amp; Recommendation</h3>
+            <p>Meta AI hackathon build that forecasts engine degradation from turbofan telemetry and recommends the next health inspection.</p>
+            <ul class="chips"><li>Machine Learning</li><li>FastAPI</li><li>Predictive Maintenance</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="vis">@@ -12,7 +12,9 @@ def parse_diff(raw):<br><span style="color:#F09A8E">-    hunks = raw.split("@@")</span><br><span style="color:#7FD6A8">+    hunks = [h for h in HUNK_RE.split(raw) if h]</span><br><br><span style="opacity:.7">review › parse_diff · change: refactor · severity: low</span></div>
+          <div class="body">
+            <h3>CodeSage - LLM Code Review</h3>
+            <p>An LLM-powered automated Python code review tool covering Git diff parsing, function extraction, prompt engineering and structured feedback generation end to end. Review outputs are persisted and indexed by function and change type for traceable, longitudinal quality tracking.</p>
+            <ul class="chips"><li>Python</li><li>LLM</li><li>Prompt Engineering</li></ul>
+          </div>
+        </article>
+      </div>
+      <p class="more"><a href="https://github.com/chandresh-gohel" target="_blank" rel="noopener">github.com/chandresh-gohel →</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Publications</div>
+        <div>
+          <h2>Peer-reviewed &amp; published.</h2>
+          <p>Research presented at an IEEE international conference: the sonar pipeline from the Systems Lab, formalized.</p>
+        </div>
+      </div>
+      <article class="paper">
+        <div class="when" style="font-size:14px;color:var(--mute)"><b style="display:block;color:var(--fg);font-weight:600;margin-bottom:4px">IEEE I3CTCON 2026</b>May 2026 · IEEE Xplore</div>
+        <div>
+          <h3>End-to-End vs. Hybrid Pipelines: Quantifying Performance Trade-offs in Sonar Object Detection for Autonomous Underwater Vehicles</h3>
+          <p class="auth">C. Gohel and S. Dhavale</p>
+          <p>Where does hybrid sonar preprocessing earn its keep? The paper benchmarks 12 YOLO configurations on the Caltech Fish Counting dataset, comparing end-to-end detectors against hybrid pipelines built on MOG2 + TVG tensors, pseudo-labels and a Kalman-centroid filter, with edge deployment timings on Jetson Orin.</p>
+          <a class="doi" href="https://doi.org/10.1109/I3CTCON68242.2026.11507628" target="_blank" rel="noopener">DOI 10.1109/I3CTCON68242.2026.11507628 ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <div class="label">Contact</div>
+      <h2>Let's build something calm, and real.</h2>
+      <p>Open to entry-level AI/ML roles and internships in predictive maintenance, computer vision and LLM systems. Always up for a hard problem.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/chandresh-gohel" target="_blank" rel="noopener">GitHub - @chandresh-gohel</a>
+        <a class="btn" href="https://www.linkedin.com/in/chandresh-gohel" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="note">no forms, no spam - just say hi</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Chandresh Gohel - AI/ML Engineer</span><a href="#top">Back to top ↑</a></div></footer>
+
+<script>
+(() => {
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const redrawers = [];
+
+/* ---------- theme toggle ---------- */
+const root = document.documentElement, tbtn = document.getElementById('themeBtn');
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+const syncBtn = () => { tbtn.textContent = isDark() ? 'Light' : 'Dark'; };
+try { const s = localStorage.getItem('cg-theme'); if (s) root.dataset.theme = s; } catch(e){}
+syncBtn();
+tbtn.addEventListener('click', () => {
+  root.dataset.theme = isDark() ? 'light' : 'dark';
+  try { localStorage.setItem('cg-theme', root.dataset.theme); } catch(e){}
+  syncBtn(); redrawers.forEach(f => f());
+});
+matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => { syncBtn(); redrawers.forEach(f => f()); });
+
+/* canvas helper: size to CSS width, hi-dpi */
+function fit(cv, h) {
+  const r = devicePixelRatio || 1, w = cv.clientWidth || cv.parentElement.clientWidth;
+  h = h || cv.clientHeight || +cv.getAttribute('height');
+  cv.width = w * r; cv.height = h * r; cv.style.height = h + 'px';
+  const c = cv.getContext('2d'); c.setTransform(r,0,0,r,0,0); return [c, w, h];
+}
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const gauss = () => { let u=0,v=0; while(!u) u=rnd(); v=rnd(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
+
+
+/* ---------- wind streams ---------- */
+const wcv = document.getElementById('wind');
+let wc, ww, wh, parts = [];
+function windSize(){ const r = Math.min(devicePixelRatio||1, 2); ww = innerWidth; wh = innerHeight;
+  wcv.width = ww*r; wcv.height = wh*r; wc = wcv.getContext('2d'); wc.setTransform(r,0,0,r,0,0);
+  const n = Math.round(Math.min(140, ww*wh/9000));
+  parts = Array.from({length:n}, () => ({ x: Math.random()*ww, y: Math.random()*wh, age: Math.random()*300, life: 220+Math.random()*260 })); }
+const flow = (x,y,t) => .35*Math.sin(y*.0042 + t*.00018) + .25*Math.cos(x*.0031 - t*.00012) + .15*Math.sin((x+y)*.0018 + t*.0001);
+function windFrame(t){
+  const rgb = css('--wind');
+  wc.clearRect(0,0,ww,wh); wc.lineCap = 'round';
+  for (const p of parts){
+    wc.beginPath(); let x = p.x, y = p.y; wc.moveTo(x,y);
+    for (let k=0;k<26;k++){ const a = flow(x,y,t); x += Math.cos(a)*5; y += Math.sin(a)*2.4; wc.lineTo(x,y); }
+    const fade = Math.sin(Math.PI * p.age/p.life);
+    wc.strokeStyle = `rgba(${rgb},${(.16*fade).toFixed(3)})`; wc.lineWidth = 1.1; wc.stroke();
+    const a = flow(p.x,p.y,t); p.x += Math.cos(a)*.7 + .25; p.y += Math.sin(a)*.35; p.age++;
+    if (p.age > p.life || p.x > ww+120 || p.y < -60 || p.y > wh+60){ p.x = -100 + Math.random()*ww*.6; p.y = Math.random()*wh; p.age = 0; }
+  }
+}
+windSize(); addEventListener('resize', windSize);
+if (reduce) windFrame(0); else (function wl(t){ windFrame(t||0); requestAnimationFrame(wl); })();
+redrawers.push(()=>{ if (reduce) windFrame(0); });
+
+/* ---------- hero trace ---------- */
+const hero = document.getElementById('heroTrace'); let ht = 0;
+function drawHero() {
+  const [c,w,h] = fit(hero, 70); c.clearRect(0,0,w,h);
+  c.strokeStyle = css('--line'); c.lineWidth = 1;
+  for (let y = 0; y <= h; y += 17.5) { c.beginPath(); c.moveTo(0,y); c.lineTo(w,y); c.stroke(); }
+  c.strokeStyle = css('--accent'); c.lineWidth = 2; c.lineJoin='round'; c.beginPath();
+  for (let x = 0; x <= w; x += 2) {
+    const t = x/18 + ht;
+    const y = h/2 + Math.sin(t)*12*Math.sin(t*.23) + Math.sin(t*2.7)*5 + Math.sin(t*7.1)*2;
+    x ? c.lineTo(x,y) : c.moveTo(x,y);
+  }
+  c.stroke();
+}
+redrawers.push(drawHero); drawHero();
+if (!reduce) (function loop(){ ht += .03; drawHero(); requestAnimationFrame(loop); })();
+
+/* ---------- SIM-01 Gaussian process ---------- */
+const gp = { cv: document.getElementById('gpCanvas'), years: 3, data: [] };
+function gpGen() {
+  gp.data = []; const n = gp.years * 12;
+  for (let i = 0; i < n; i++) {
+    const x = (i + rnd()*.8) / 12;
+    const y = 1100 * Math.pow(x, .82) + 140*Math.sin(x*2.1) + gauss()*70;
+    gp.data.push([x, y]);
+  }
+}
+function chol(A) { const n=A.length, L=A.map(()=>new Float64Array(n));
+  for (let i=0;i<n;i++) for (let j=0;j<=i;j++) { let s=A[i][j]; for (let k=0;k<j;k++) s-=L[i][k]*L[j][k];
+    L[i][j] = i===j ? Math.sqrt(Math.max(s,1e-9)) : s/L[j][j]; } return L; }
+function solveL(L,b){const n=b.length,y=new Float64Array(n);for(let i=0;i<n;i++){let s=b[i];for(let k=0;k<i;k++)s-=L[i][k]*y[k];y[i]=s/L[i][i];}return y;}
+function solveLT(L,y){const n=y.length,x=new Float64Array(n);for(let i=n-1;i>=0;i--){let s=y[i];for(let k=i+1;k<n;k++)s-=L[k][i]*x[k];x[i]=s/L[i][i];}return x;}
+function gpFit() {
+  const X = gp.data.map(d=>d[0]), Y = gp.data.map(d=>d[1]);
+  // linear mean function + RBF residual kernel
+  const n = X.length, mx = X.reduce((a,b)=>a+b)/n, my = Y.reduce((a,b)=>a+b)/n;
+  let sxy=0,sxx=0; for(let i=0;i<n;i++){sxy+=(X[i]-mx)*(Y[i]-my);sxx+=(X[i]-mx)**2;}
+  const slope = sxy/sxx, icpt = my - slope*mx, mean = x => icpt + slope*x;
+  const R = Y.map((y,i)=>y-mean(X[i]));
+  const sf2 = 160**2, l = 0.9, sn2 = 70**2;
+  const k = (a,b) => sf2*Math.exp(-((a-b)**2)/(2*l*l));
+  const K = X.map(a=>X.map(b=>k(a,b))); for(let i=0;i<n;i++) K[i][i]+=sn2;
+  const L = chol(K), alpha = solveLT(L, solveL(L, R));
+  const xmax = gp.years + 2, out = [];
+  for (let s = 0; s <= 120; s++) {
+    const x = xmax*s/120, ks = X.map(a=>k(a,x));
+    let mu = mean(x); for (let i=0;i<n;i++) mu += ks[i]*alpha[i];
+    const v = solveL(L, ks); let vv = sf2 + sn2; for (let i=0;i<n;i++) vv -= v[i]*v[i];
+    // growing trend uncertainty beyond observed data
+    const ext = Math.max(0, x - gp.years); vv += (ext*260)**2;
+    out.push([x, mu, Math.sqrt(Math.max(vv,0))]);
+  }
+  return { out, xmax };
+}
+function gpDraw() {
+  const H = gp.cv.clientWidth < 500 ? 240 : 300;
+  const [cx,W,Hh] = fit(gp.cv, H);
+  const { out, xmax } = gpFit();
+  const pad = { l: 58, r: 14, t: 14, b: 34 };
+  const ymax = Math.ceil(Math.max(...out.map(o=>o[1]+2*o[2]), ...gp.data.map(d=>d[1]))/1000)*1000;
+  const sx = x => pad.l + (W-pad.l-pad.r)*x/xmax, sy = y => Hh-pad.b - (Hh-pad.t-pad.b)*Math.max(y,0)/ymax;
+  cx.clearRect(0,0,W,Hh);
+  cx.font = '11px "DM Mono", monospace'; cx.fillStyle = '#7f8aa0'; cx.strokeStyle = 'rgba(191,230,221,.09)'; cx.lineWidth = 1;
+  const ystep = ymax <= 4000 ? 1000 : 2000;
+  for (let y = 0; y <= ymax; y += ystep) { cx.beginPath(); cx.moveTo(pad.l, sy(y)); cx.lineTo(W-pad.r, sy(y)); cx.stroke(); cx.textAlign='right'; cx.fillText((y/1000)+'k', pad.l-8, sy(y)+4); }
+  for (let x = 0; x <= xmax; x++) { cx.textAlign='center'; cx.fillText(x+'y', sx(x), Hh-pad.b+18); }
+  cx.save(); cx.translate(14, Hh/2); cx.rotate(-Math.PI/2); cx.textAlign='center'; cx.fillText('RF-CYCLES ↑', 0, 0); cx.restore();
+  cx.textAlign='right'; cx.fillText('SERVICE LIFE →', W-pad.r, Hh-6);
+  // forecast region
+  cx.fillStyle = 'rgba(243,210,122,.06)'; cx.fillRect(sx(gp.years), pad.t, sx(xmax)-sx(gp.years), Hh-pad.t-pad.b);
+  // band
+  cx.beginPath(); out.forEach((o,i)=>{const p=[sx(o[0]),sy(o[1]+1.96*o[2])]; i?cx.lineTo(...p):cx.moveTo(...p);});
+  for (let i=out.length-1;i>=0;i--) cx.lineTo(sx(out[i][0]), sy(out[i][1]-1.96*out[i][2]));
+  cx.closePath(); cx.fillStyle = 'rgba(92,200,224,.18)'; cx.fill();
+  // points
+  cx.fillStyle = 'rgba(231,235,243,.75)';
+  gp.data.forEach(d=>{cx.beginPath();cx.arc(sx(d[0]),sy(d[1]),2.2,0,7);cx.fill();});
+  // mean: solid observed, dashed forecast
+  cx.lineWidth = 2; cx.strokeStyle = '#F3D27A';
+  [[0,gp.years,[]],[gp.years,xmax,[5,5]]].forEach(([a,b,dash])=>{
+    cx.setLineDash(dash); cx.beginPath(); let started=false;
+    out.forEach(o=>{ if(o[0]<a-1e-9||o[0]>b+1e-9) return; const p=[sx(o[0]),sy(o[1])]; started?cx.lineTo(...p):(cx.moveTo(...p),started=true); });
+    cx.stroke(); });
+  cx.setLineDash([]);
+  cx.fillStyle = '#BFE6DD'; cx.textAlign='left'; cx.fillText('observed', pad.l+8, pad.t+14);
+  cx.fillStyle = '#F3D27A'; cx.fillText('forecast + 95% PI', sx(gp.years)+8, pad.t+14);
+}
+const gpYears = document.getElementById('gpYears');
+gpYears.addEventListener('input', () => { gp.years = +gpYears.value; document.getElementById('gpYearsOut').textContent = gp.years + ' yr'; gpGen(); gpDraw(); });
+document.getElementById('gpResample').addEventListener('click', () => { gpGen(); gpDraw(); });
+gpGen(); redrawers.push(gpDraw); gpDraw();
+
+/* ---------- SIM-02 CAPTCHA ---------- */
+const ALPH = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const cap = { cv: document.getElementById('capCanvas'), text: 'R6D9K', noise: 45, glyph: [] };
+const slotsEl = document.getElementById('capSlots');
+slotsEl.innerHTML = Array.from({length:5},()=>'<div class="slot"><b>·</b><small>-</small><div class="bar"><i></i></div></div>').join('');
+function capNew(){ cap.text = Array.from({length:5},()=>ALPH[Math.floor(rnd()*ALPH.length)]).join('');
+  cap.glyph = [...cap.text].map(()=>({r:(rnd()-.5)*.6, dy:(rnd()-.5)*14, s:38+rnd()*10, hue: 190+rnd()*40})); }
+function capDraw(){
+  const [c,w,h] = fit(cap.cv, 120); const nz = cap.noise/100;
+  c.fillStyle = '#132434'; c.fillRect(0,0,w,h);
+  for (let i=0;i<w*h*nz*.05;i++){ c.fillStyle = `rgba(191,230,221,${.15+rnd()*.35})`; c.fillRect(rnd()*w, rnd()*h, 1.5, 1.5); }
+  const cw = w/6.2;
+  cap.glyph.forEach((g,i)=>{
+    c.save(); c.translate(cw*(i+0.9), h/2 + g.dy); c.rotate(g.r);
+    c.font = `600 ${g.s}px "DM Mono", monospace`; c.textAlign='center'; c.textBaseline='middle';
+    c.fillStyle = `hsl(${g.hue} 55% 82%)`; c.fillText(cap.text[i], 0, 0); c.restore();
+  });
+  const lines = Math.round(nz*9);
+  for (let i=0;i<lines;i++){ c.strokeStyle = `rgba(243,210,122,${.35+rnd()*.4})`; c.lineWidth = 1+rnd()*2; c.beginPath();
+    c.moveTo(0, rnd()*h); c.bezierCurveTo(w*.3, rnd()*h, w*.7, rnd()*h, w, rnd()*h); c.stroke(); }
+}
+function capReset(){ [...slotsEl.children].forEach(s=>{s.className='slot';s.querySelector('b').textContent='·';s.querySelector('small').textContent='-';s.querySelector('i').style.width='0';}); document.getElementById('capOut').textContent='> OUTPUT: -'; }
+function capRun(){
+  const nz = cap.noise/100, res = [];
+  [...cap.text].forEach((ch,i)=>{
+    let conf = Math.min(.995, .995 - nz*nz*.55 - rnd()*nz*.25);
+    let out = ch;
+    if (conf < .6 && rnd() < (.6-conf)*2.2) { out = ALPH[Math.floor(rnd()*ALPH.length)]; if (out===ch) out = ALPH[(ALPH.indexOf(ch)+3)%ALPH.length]; }
+    res.push([out, conf]);
+  });
+  res.forEach(([o,conf],i)=>{
+    const show = () => { const s = slotsEl.children[i]; s.querySelector('b').textContent=o; s.querySelector('small').textContent=(conf*100).toFixed(1)+'%';
+      s.querySelector('i').style.width=(conf*100)+'%'; s.classList.toggle('low', o!==cap.text[i]);
+      if (i===4){ const ok = res.every((r,j)=>r[0]===cap.text[j]);
+        document.getElementById('capOut').textContent = '> OUTPUT: ' + res.map(r=>r[0]).join(' ') + (ok ? '   ✓ match' : `   ✗ truth: ${[...cap.text].join(' ')}`); } };
+    reduce ? show() : setTimeout(show, 140*(i+1));
+  });
+}
+const capNoise = document.getElementById('capNoise');
+capNoise.addEventListener('input', ()=>{ cap.noise=+capNoise.value; document.getElementById('capNoiseOut').textContent=cap.noise+'%'; capDraw(); capReset(); });
+document.getElementById('capRun').addEventListener('click', capRun);
+document.getElementById('capNew').addEventListener('click', ()=>{ capNew(); capDraw(); capReset(); });
+cap.glyph = [...cap.text].map(()=>({r:(rnd()-.5)*.6, dy:(rnd()-.5)*14, s:38+rnd()*10, hue: 190+rnd()*40}));
+capDraw(); capRun(); redrawers.push(capDraw);
+
+/* ---------- SIM-03 Sonar ---------- */
+const sonar = { cv: document.getElementById('sonarCanvas'), rec: null, fish: [], y: 0, running: false };
+function sonarBuild(){
+  const [c,w,h] = fit(sonar.cv, 300);
+  const off = document.createElement('canvas'); off.width = w; off.height = h; const o = off.getContext('2d');
+  const img = o.createImageData(w, h), nadir = w/2;
+  sonar.fish = []; const n = 4 + Math.floor(rnd()*5);
+  for (let i=0;i<n;i++){ const side = i%2 ? 1 : -1; sonar.fish.push({ x: nadir + side*(30 + rnd()*(w/2-60)), y: 30 + (h-60)*(i+.3+rnd()*.4)/n, rx: 7+rnd()*7, ry: 3+rnd()*3, a: rnd()*Math.PI }); }
+  for (let y=0;y<h;y++){ const rip = Math.sin(y*.05)*6;
+    for (let x=0;x<w;x++){
+      const d = Math.abs(x-nadir); let v;
+      if (d < 18 + rip*.3) v = 6 + rnd()*10;                    // water column
+      else { const r = d/(w/2); v = 70*(1-r*.55) + rnd()*55*(1-r*.4) + 18*Math.sin(x*.07+y*.02); // seabed backscatter
+        if (Math.abs(d-(w*.42+rip)) < 2) v += 40; }
+      for (const f of sonar.fish){ const dx=(x-f.x)/f.rx, dy=(y-f.y)/f.ry, q=dx*dx+dy*dy; if (q<1) v += 150*(1-q);
+        // acoustic shadow behind target, away from nadir
+        const away = Math.sign(f.x-nadir); if (Math.abs(y-f.y)<f.ry && (x-f.x)*away > f.rx && (x-f.x)*away < f.rx*4) v *= .45; }
+      v = Math.max(0, Math.min(255, v)); const i4 = (y*w+x)*4;
+      img.data[i4] = v*.62; img.data[i4+1] = v*.88; img.data[i4+2] = v; img.data[i4+3] = 255;
+    } }
+  o.putImageData(img, 0, 0); sonar.rec = off;
+}
+function sonarDraw(){
+  const [c,w,h] = fit(sonar.cv, 300); if (!sonar.rec || sonar.rec.width !== w) { sonarBuild(); }
+  c.fillStyle = '#0F1D2B'; c.fillRect(0,0,w,h);
+  const y = Math.min(sonar.y, h); if (y > 0) c.drawImage(sonar.rec, 0, 0, w, y, 0, 0, w, y);
+  let count = 0;
+  c.strokeStyle = '#F3D27A'; c.lineWidth = 1.5; c.font = '10px "DM Mono", monospace'; c.fillStyle = '#F3D27A';
+  sonar.fish.forEach((f,i)=>{ if (f.y + f.ry + 4 <= y) { count++; c.strokeRect(f.x-f.rx-5, f.y-f.ry-5, f.rx*2+10, f.ry*2+10); c.fillText('fish '+(i+1), f.x-f.rx-5, f.y-f.ry-8); } });
+  if (y < h) { c.strokeStyle = 'rgba(191,230,221,.9)'; c.lineWidth = 1; c.beginPath(); c.moveTo(0,y); c.lineTo(w,y); c.stroke(); }
+  c.fillStyle = 'rgba(191,230,221,.55)'; c.textAlign='left'; c.fillText('PORT', 8, h-8); c.textAlign='right'; c.fillText('STARBOARD', w-8, h-8); c.textAlign='left';
+  const st = document.getElementById('sonarStatus');
+  st.innerHTML = y >= h ? `Pass complete - fish counted <b>${count} / ${sonar.fish.length}</b>` : `Scanning… line ${Math.round(y)} · counted <b>${count}</b>`;
+}
+function sonarRun(){
+  sonarBuild(); sonar.y = 0;
+  if (reduce) { sonar.y = sonar.cv.height; sonarDraw(); return; }
+  if (sonar.running) return; sonar.running = true;
+  (function step(){ sonar.y += 2.2; sonarDraw(); if (sonar.y < sonar.cv.clientHeight + 2) requestAnimationFrame(step); else { sonar.y = 1e9; sonarDraw(); sonar.running = false; } })();
+}
+seed = 31; sonarBuild(); sonar.y = 1e9; sonarDraw();
+document.getElementById('sonarNew').addEventListener('click', sonarRun);
+redrawers.push(()=>{ if(!sonar.running) sonarDraw(); });
+
+/* ---------- SIM-04 Memory graph ---------- */
+const svg = document.getElementById('graph');
+const nodes = [
+  { id:'t1', x:60,  y:70, txt:'lives in Ahmedabad', ts:'2023-01' },
+  { id:'t2', x:190, y:70, txt:'moved to Gandhinagar', ts:'2023-12' },
+  { id:'t3', x:320, y:70, txt:'relocated to Pune', ts:'2025-07' },
+  { id:'latest', x:455, y:70, txt:'city = Pune', ts:'current' },
+];
+function graphDraw(active = [], state = '') {
+  const sc = '#BFE6DD', ac = '#F3D27A', dim = 'rgba(191,230,221,.35)';
+  let s = '<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="'+dim+'"/></marker><marker id="ara" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="'+ac+'"/></marker></defs>';
+  for (let i=0;i<nodes.length-1;i++){ const a=nodes[i], b=nodes[i+1], on = active.includes(a.id) && active.includes(b.id);
+    s += `<line x1="${a.x+30}" y1="${a.y}" x2="${b.x-32}" y2="${b.y}" stroke="${on?ac:dim}" stroke-width="${on?2:1.2}" marker-end="url(#${on?'ara':'ar'})"/>`;
+    s += `<text x="${(a.x+b.x)/2}" y="${a.y-12}" fill="${on?ac:dim}" font-family="DM Mono, monospace" font-size="9" text-anchor="middle">SUPERSEDES</text>`; }
+  nodes.forEach(n=>{ const on = active.includes(n.id);
+    s += `<circle cx="${n.x}" cy="${n.y}" r="28" fill="${on?'rgba(243,210,122,.14)':'rgba(191,230,221,.06)'}" stroke="${on?ac:sc}" stroke-width="${on?2:1}"/>`;
+    s += `<text x="${n.x}" y="${n.y+4}" fill="${on?ac:sc}" font-family="DM Mono, monospace" font-size="12" text-anchor="middle">${n.id}</text>`;
+    s += `<text x="${n.x}" y="${n.y+48}" fill="rgba(231,235,243,.75)" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" text-anchor="middle">${n.txt}</text>`;
+    s += `<text x="${n.x}" y="${n.y+62}" fill="${dim}" font-family="DM Mono, monospace" font-size="9" text-anchor="middle">${n.ts}</text>`; });
+  if (state === 'refused') s += `<rect x="150" y="160" width="220" height="32" rx="6" fill="rgba(240,154,142,.12)" stroke="#F09A8E"/><text x="260" y="180" fill="#F09A8E" font-family="DM Mono, monospace" font-size="11" text-anchor="middle">empty subgraph → REFUSED</text>`;
+  if (state === 'stale') s += `<rect x="150" y="160" width="220" height="32" rx="6" fill="rgba(240,207,134,.12)" stroke="#F0CF86"/><text x="260" y="180" fill="#F0CF86" font-family="DM Mono, monospace" font-size="11" text-anchor="middle">lexical hit on t1 → stale answer</text>`;
+  if (state === 'ok') s += `<rect x="150" y="160" width="220" height="32" rx="6" fill="rgba(127,214,168,.12)" stroke="#7FD6A8"/><text x="260" y="180" fill="#7FD6A8" font-family="DM Mono, monospace" font-size="11" text-anchor="middle">traversal → latest fact</text>`;
+  svg.innerHTML = s;
+}
+graphDraw();
+let lexical = false; const gOut = document.getElementById('graphOut'), lexBtn = document.getElementById('qLex');
+function animatePath(ids, state, text){
+  if (reduce) { graphDraw(ids, state); gOut.textContent = text; return; }
+  let k = 0; gOut.textContent = '> traversing…';
+  (function tick(){ k++; graphDraw(ids.slice(0,k), k>=ids.length?state:''); if (k < ids.length) setTimeout(tick, 260); else gOut.textContent = text; })();
+}
+document.getElementById('qYes').addEventListener('click', ()=>{
+  if (lexical) animatePath(['t1'], 'stale', '> Q: "Which city does the user live in?"\n> keyword match "lives in" → t1 (2023-01)\n> ANSWER: Ahmedabad   ⚠ superseded twice; lexical search misses recency');
+  else animatePath(['t1','t2','t3','latest'], 'ok', '> Q: "Which city does the user live in?"\n> MATCH (t:Fact {key:"city"})-[:SUPERSEDES*]->(latest)\n> ANSWER: Pune   (latest, supersedes t1–t3)');
+});
+document.getElementById('qNo').addEventListener('click', ()=>{
+  graphDraw([], 'refused');
+  gOut.textContent = '> Q: "What is the user\'s blood type?"\n> MATCH (t:Fact {key:"blood_type"}) → 0 nodes\n> REFUSED: no supporting memory, so no answer is generated';
+});
+lexBtn.addEventListener('click', ()=>{ lexical = !lexical; lexBtn.classList.toggle('on', lexical); lexBtn.setAttribute('aria-pressed', lexical); graphDraw(); gOut.textContent = lexical ? '> lexical fallback ON: retrieval by keyword overlap' : '> graph traversal ON: retrieval by SUPERSEDES edges'; });
+
+/* ---------- SIM-05 Engine health ---------- */
+const hv = document.getElementById('hVib'), ho = document.getElementById('hOil'), he = document.getElementById('hEgt');
+const sig = (x, mid, k) => 1/(1+Math.exp(-(x-mid)/k));
+function health(){
+  const v=+hv.value, o=+ho.value, e=+he.value;
+  document.getElementById('hVibOut').textContent = v+' mm/s';
+  document.getElementById('hOilOut').textContent = o+' °C';
+  document.getElementById('hEgtOut').textContent = e+' °C';
+  const p = 46*sig(v,30,5) + 30*sig(o,112,5) + 34*sig(e,540,25);
+  const idx = Math.max(0, Math.round(100 - p - 2));
+  const [lab, col, rec] = idx >= 75 ? ['HEALTHY', css('--good'), 'continue operation - next check at the scheduled interval']
+    : idx >= 50 ? ['WATCH', css('--warn'), 'schedule inspection within 50 operating hours; trend '+(sig(v,30,5)>.5?'vibration':sig(o,112,5)>.5?'oil temperature':'exhaust gas temperature')]
+    : ['CRITICAL', css('--bad'), 'reduce load and inspect now - '+(sig(v,30,5)>.5?'check bearings and mounts':sig(o,112,5)>.5?'check oil cooler and lubrication':'check injectors and turbocharger')];
+  document.getElementById('hIdx').textContent = idx;
+  const f = document.getElementById('hFill'); f.style.width = idx+'%'; f.style.background = col;
+  const pill = document.getElementById('hPill'); pill.textContent = lab; pill.style.color = col; pill.style.background = `color-mix(in srgb, ${col} 15%, transparent)`;
+  document.getElementById('hOut').textContent = '> Recommendation: ' + rec;
+}
+[hv,ho,he].forEach(i=>i.addEventListener('input', health)); health(); redrawers.push(health);
+
+/* ---------- work card mini visuals ---------- */
+function cardSonar(){ const cv=document.getElementById('cardSonar'); const [c,w,h]=fit(cv, 150);
+  c.fillStyle='#0F1D2B'; c.fillRect(0,0,w,h); seed = 99;
+  for (let y=0;y<h;y+=2) for (let x=0;x<w;x+=2){ const d=Math.abs(x-w/2); if(d<12) continue; const v=40+rnd()*70*(1-d/w); c.fillStyle=`rgba(191,230,221,${v/255})`; c.fillRect(x,y,2,2); }
+  [[w*.28,h*.4],[w*.7,h*.62],[w*.83,h*.3]].forEach(([x,y],i)=>{ c.fillStyle='rgba(220,248,255,.95)'; c.beginPath(); c.ellipse(x,y,9,4,.3,0,7); c.fill();
+    c.strokeStyle='#F3D27A'; c.lineWidth=1.5; c.strokeRect(x-15,y-10,30,20); c.font='10px "DM Mono", monospace'; c.fillStyle='#F3D27A'; c.fillText('fish '+(0.9-i*.04).toFixed(2), x-15, y-14); }); }
+function cardEngine(){ const cv=document.getElementById('cardEngine'); const [c,w,h]=fit(cv, 150);
+  c.fillStyle='#0F1D2B'; c.fillRect(0,0,w,h); c.strokeStyle='rgba(191,230,221,.1)';
+  for(let y=20;y<h;y+=25){c.beginPath();c.moveTo(0,y);c.lineTo(w,y);c.stroke();}
+  c.strokeStyle='#BFE6DD'; c.lineWidth=1.5; c.beginPath(); seed=5;
+  for(let x=0;x<=w;x+=3){ const t=x/w, y=h*.25+h*.55*Math.pow(t,2.4)+ (rnd()-.5)*8; x?c.lineTo(x,y):c.moveTo(x,y);} c.stroke();
+  c.strokeStyle='#F09A8E'; c.setLineDash([4,4]); c.beginPath(); c.moveTo(0,h*.72); c.lineTo(w,h*.72); c.stroke(); c.setLineDash([]);
+  c.font='10px "DM Mono", monospace'; c.fillStyle='#F09A8E'; c.fillText('inspection threshold', 12, h*.72-6);
+  c.fillStyle='#F3D27A'; c.beginPath(); c.arc(w*.86,h*.72,4,0,7); c.fill(); c.fillText('next check → cycle 182', w*.86-140, h*.72+18); }
+cardSonar(); cardEngine();
+
+/* resize */
+let rt; addEventListener('resize', ()=>{ clearTimeout(rt); rt = setTimeout(()=>{ sonar.rec=null; drawHero(); gpDraw(); capDraw(); if(!sonar.running) sonarDraw(); cardSonar(); cardEngine(); }, 150); });
+})();
+</script>
+
+</body></html>
